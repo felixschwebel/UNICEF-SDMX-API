@@ -10,5 +10,9 @@ dataflow_params = {
 }
 
 response = requests.get(url=endpoint+dataflow_add, params=dataflow_params)
-text = response.json()
+file = response.json()
 print(response.status_code)
+
+dataflows = file['data']['dataflows']
+for item in dataflows:
+    print(f"name: {item['name']} - id: {item['id']}")
